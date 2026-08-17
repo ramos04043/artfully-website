@@ -1,0 +1,155 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Art Studio design system.
+ * Palette: cream #FFF2DB, sage green #607456, deep brown #493628.
+ * All colors are oklch tokens. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --font-display: "Parkinsans", Georgia, serif;
+  --font-sans: "Parkinsans", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-cream: var(--cream);
+  --color-sage: var(--sage);
+  --color-cocoa: var(--cocoa);
+  --shadow-soft: 0 18px 40px -24px oklch(0.33 0.037 60 / 0.35);
+}
+
+:root {
+  --radius: 0.25rem;
+  --cream: oklch(0.966 0.028 85);
+  --sage: oklch(0.535 0.048 133);
+  --cocoa: oklch(0.33 0.037 60);
+
+  --background: oklch(0.966 0.028 85);
+  --foreground: oklch(0.33 0.037 60);
+  --card: oklch(0.988 0.014 88);
+  --card-foreground: oklch(0.33 0.037 60);
+  --popover: oklch(0.988 0.014 88);
+  --popover-foreground: oklch(0.33 0.037 60);
+  --primary: oklch(0.535 0.048 133);
+  --primary-foreground: oklch(0.978 0.02 88);
+  --secondary: oklch(0.93 0.032 84);
+  --secondary-foreground: oklch(0.33 0.037 60);
+  --muted: oklch(0.935 0.03 84);
+  --muted-foreground: oklch(0.5 0.03 62);
+  --accent: oklch(0.9 0.035 120);
+  --accent-foreground: oklch(0.33 0.037 60);
+  --destructive: oklch(0.55 0.19 27);
+  --destructive-foreground: oklch(0.98 0.01 88);
+  --border: oklch(0.885 0.032 84);
+  --input: oklch(0.885 0.032 84);
+  --ring: oklch(0.535 0.048 133);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility section-pad {
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+
+@utility container-x {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@utility eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+/* Chatbot animations */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@utility animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+@utility animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
