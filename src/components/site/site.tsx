@@ -5,7 +5,7 @@ import { Chatbot } from "./Chatbot";
 
 export const PHONE = "+91 73589 82333";
 export const EMAIL = "hello@artfully.in";
-export const ADDRESS = "Artfully Address Placeholder";
+export const ADDRESS = "Artfully, 3rd Floor, S Cube Complex, Saradha College Main Road, Ramakrishna Road Signal, Hasthampatty, Salem - 636 007";
 const WA_NUMBER = "917358982333";
 
 export function waLink(message: string) {
