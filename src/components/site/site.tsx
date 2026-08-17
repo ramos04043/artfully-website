@@ -247,7 +247,7 @@ function Footer() {
             <a href={waLink(WA_MESSAGES.general)} target="_blank" rel="noreferrer">
               WhatsApp
             </a>
-            <a href="#" aria-label="Instagram">
+            <a href="https://www.instagram.com/artfully.in" target="_blank" rel="noreferrer" aria-label="Instagram">
               Instagram
             </a>
             <a href="#" aria-label="Facebook">
