@@ -15,16 +15,16 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
   head: () => ({
     meta: [
-      { title: "Contact & Inquiries | Artfully" },
+      { title: "Contact Artfully | Art Classes in Salem" },
       {
         name: "description",
         content:
-          "Send an inquiry about art classes, workshops, walk-in sessions, online classes, or events. Studio hours, phone, email and address.",
+          "Contact Artfully for art classes in salem, upcoming workshops, walk-in activities or creative birthday parties.",
       },
-      { property: "og:title", content: "Contact & Inquiries | Artfully" },
+      { property: "og:title", content: "Contact Artfully | Art Classes in Salem" },
       {
         property: "og:description",
-        content: "Let's create something together — send us an inquiry.",
+        content: "Looking for art classes, workshops or creative activities? We'd love to help you find the right Artfully experience.",
       },
       { property: "og:url", content: "/contact" },
     ],
@@ -35,21 +35,27 @@ export const Route = createFileRoute("/contact")({
 function Contact() {
   return (
     <SiteLayout>
-      <PageHero eyebrow="Contact" title="Let's Create Something Together">
+      <PageHero eyebrow="Contact" title="Contact Artfully">
         <p>
-          Interested in classes, workshops, walk-in sessions, online classes, or events? Send us an
-          inquiry and our team will get back to you.
+          Looking for art classes in salem, upcoming workshops, walk-in activities or a creative birthday party?
         </p>
-        <div className="pt-2">
-          <WhatsAppBtn message={WA_MESSAGES.general} variant="solid" />
+        <p className="mt-3">
+          We'd love to help you find the right Artfully experience.
+        </p>
+        <p className="mt-3">
+          Send us an inquiry or chat with us on WhatsApp for information about classes, schedules, workshops, events and availability.
+        </p>
+        <div className="flex flex-wrap gap-3 pt-4">
+          <Btn to="#inquiry-form">Send an Inquiry</Btn>
+          <WhatsAppBtn message={WA_MESSAGES.general} label="Chat on WhatsApp" />
         </div>
       </PageHero>
 
-      <section className="section-pad">
+      <section className="section-pad" id="inquiry-form">
         <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-start">
           <div className="space-y-6">
             {[
-              { icon: Phone, label: "Phone", value: PHONE },
+              { icon: Phone, label: "Phone / WhatsApp", value: PHONE },
               { icon: Mail, label: "Email", value: EMAIL },
               { icon: MapPin, label: "Address", value: ADDRESS },
             ].map(({ icon: Icon, label, value }) => (
@@ -69,8 +75,8 @@ function Contact() {
                 <p className="text-xs tracking-widest text-muted-foreground uppercase">
                   Studio Hours
                 </p>
-                <p className="mt-1 text-base">Monday – Friday: 10:00 AM – 7:30 PM</p>
-                <p className="text-base">Saturday – Sunday: 10:00 AM – 6:00 PM</p>
+                <p className="mt-1 text-base">Wednesday – Monday: 10:00 AM – 7:00 PM</p>
+                <p className="text-base">Closed on Tuesdays</p>
               </div>
             </div>
           </div>

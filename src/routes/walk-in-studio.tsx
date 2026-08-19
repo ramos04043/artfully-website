@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import walkinImg from "@/assets/walkin.jpg";
 import {
   Btn,
   Card,
@@ -15,16 +14,16 @@ export const Route = createFileRoute("/walk-in-studio")({
   component: WalkIn,
   head: () => ({
     meta: [
-      { title: "Walk-In Art Studio | Creative Projects" },
+      { title: "Walk-In Art Studio in Salem | Artfully" },
       {
         name: "description",
         content:
-          "Walk in, pick a project, choose your materials and create at your own pace — mini canvas, tote bag painting, pottery, clay art and more.",
+          "Walk-in art studio in Salem. Create canvas painting, tote bags, pottery, clay art and DIY crafts at your own pace without regular classes.",
       },
-      { property: "og:title", content: "Walk-In Art Studio | Creative Projects" },
+      { property: "og:title", content: "Walk-In Art Studio in Salem | Artfully" },
       {
         property: "og:description",
-        content: "No commitment required — visit the studio and start creating.",
+        content: "No commitment required — visit the studio and start creating in Salem.",
       },
       { property: "og:url", content: "/walk-in-studio" },
     ],
@@ -32,51 +31,43 @@ export const Route = createFileRoute("/walk-in-studio")({
   }),
 });
 
-const STEPS = [
-  "Visit the Studio",
-  "Choose a Project",
-  "Pick Your Materials",
-  "Start Creating",
-  "Take Your Artwork Home",
-];
-
 const PROJECTS = [
-  "Mini Canvas Painting",
+  "Canvas Painting",
   "Tote Bag Painting",
   "Pot Painting",
   "Bookmark Art",
   "Texture Art",
-  "DIY Craft",
   "Clay Art",
+  "DIY Crafts",
 ];
 
 function WalkIn() {
   return (
     <SiteLayout>
-      <PageHero eyebrow="Walk-In Studio" title="Walk In. Pick a Project. Start Creating.">
-        <p>No long-term commitment required.</p>
-        <p>
-          Visit the studio, choose a project you love, pick your materials, and enjoy creating at
-          your own pace.
+      <PageHero eyebrow="Walk-In Studio" title="Walk-In Art Studio in Salem">
+        <p>Looking for something creative to do in Salem?</p>
+        <p className="mt-3">
+          Visit Artfully's walk-in art studio and create your own artwork without joining a regular class.
         </p>
-        <div className="flex flex-wrap gap-3 pt-2">
-          <WhatsAppBtn message={WA_MESSAGES.walkin} label="Chat on WhatsApp Before Visiting" variant="solid" />
-          <Btn to="/contact" variant="outline">
-            Inquire Now
-          </Btn>
+        <p className="mt-3">
+          Choose an activity, get your materials and enjoy creating at your own pace with guidance available when needed.
+        </p>
+        <div className="flex flex-wrap gap-3 pt-4">
+          <Btn to="/contact">Ask About Walk-In Availability</Btn>
+          <WhatsAppBtn message={WA_MESSAGES.walkin} label="Chat on WhatsApp" />
         </div>
       </PageHero>
 
       <section className="section-pad">
         <div className="container-x">
-          <SectionHead eyebrow="How It Works" title="Five Easy Steps" />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {STEPS.map((s, i) => (
-              <Card key={s}>
-                <span className="font-[family-name:var(--font-display)] text-3xl text-primary">
-                  {i + 1}
-                </span>
-                <p className="mt-3 text-sm font-medium">{s}</p>
+          <SectionHead eyebrow="Activities" title="Walk-In Art Activities" />
+          <p className="text-center mt-4 text-muted-foreground max-w-2xl mx-auto">
+            Try canvas painting, tote bag painting, pot painting, bookmark art, texture art, clay art and other DIY creative activities.
+          </p>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {PROJECTS.map((p) => (
+              <Card key={p}>
+                <h3 className="text-lg font-semibold">{p}</h3>
               </Card>
             ))}
           </div>
@@ -84,31 +75,17 @@ function WalkIn() {
       </section>
 
       <section className="section-pad bg-secondary/50">
-        <div className="container-x grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="overflow-hidden rounded-md border border-border">
-            <img
-              src={walkinImg}
-              alt="Walk-in studio table with mini canvases, tote bag and clay pots"
-              loading="lazy"
-              width={1200}
-              height={900}
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div>
-            <p className="eyebrow mb-3">Projects</p>
-            <h2 className="text-3xl sm:text-4xl">Pick What You'd Love to Make</h2>
-            <ul className="mt-6 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
-              {PROJECTS.map((p) => (
-                <li key={p}>• {p}</li>
-              ))}
-            </ul>
-            <div className="mt-8">
-              <WhatsAppBtn
-                message={WA_MESSAGES.walkin}
-                label="Chat on WhatsApp Before Visiting"
-              />
-            </div>
+        <div className="container-x text-center">
+          <h2 className="text-3xl sm:text-4xl">Perfect for:</h2>
+          <p className="mt-6 text-lg text-muted-foreground">
+            Kids • Adults • Friends • Families • Couples • Small Groups
+          </p>
+          <p className="mt-4 text-muted-foreground">
+            Come with an idea or discover one when you arrive.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Btn to="/contact">Ask About Walk-In Availability</Btn>
+            <WhatsAppBtn message={WA_MESSAGES.walkin} label="Chat on WhatsApp" />
           </div>
         </div>
       </section>

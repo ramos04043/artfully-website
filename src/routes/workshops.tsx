@@ -14,16 +14,16 @@ export const Route = createFileRoute("/workshops")({
   component: Workshops,
   head: () => ({
     meta: [
-      { title: "Art Workshops & Masterclasses | Artfully" },
+      { title: "Art Workshops in Salem | Artfully" },
       {
         name: "description",
         content:
-          "Special workshops and masterclasses in watercolour, portrait drawing, acrylics, clay, and mixed media. Inquire about availability.",
+          "Hands-on art and painting workshops in Salem. Explore watercolour, acrylics, portrait drawing, sketching, texture art, mixed media and clay art.",
       },
-      { property: "og:title", content: "Art Workshops & Masterclasses | Artfully" },
+      { property: "og:title", content: "Art Workshops in Salem | Artfully" },
       {
         property: "og:description",
-        content: "Discover workshops introducing new techniques, mediums, and creative experiences.",
+        content: "Discover workshops introducing new art techniques, mediums, and creative experiences.",
       },
       { property: "og:url", content: "/workshops" },
     ],
@@ -32,42 +32,42 @@ export const Route = createFileRoute("/workshops")({
 });
 
 const WORKSHOPS = [
-  "Watercolour Workshop",
-  "Portrait Drawing Masterclass",
-  "Acrylic Painting Session",
-  "Clay & Texture Art",
-  "Mixed Media Workshop",
+  "Watercolour Painting",
+  "Acrylic Painting",
+  "Portrait Drawing",
+  "Sketching",
+  "Texture Art",
+  "Mixed Media",
+  "Clay Art",
+  "Seasonal Creative Workshops",
 ];
 
 function Workshops() {
   return (
     <SiteLayout>
-      <PageHero eyebrow="Workshops & Masterclasses" title="Explore Something New">
+      <PageHero eyebrow="Workshops" title="Art Workshops in Salem">
         <p>
-          Discover special workshops and masterclasses designed to introduce new techniques,
-          mediums, and creative experiences.
+          Discover hands-on art and painting workshops in Salem at Artfully.
         </p>
-        <div className="flex flex-wrap gap-3 pt-2">
-          <Btn to="/contact">Inquire Now</Btn>
+        <p className="mt-3">
+          Our workshops give kids, adults and creative enthusiasts the opportunity to explore new art forms without committing to regular classes.
+        </p>
+        <p className="mt-3">
+          Whether you're a beginner or simply looking for something creative to do, Artfully workshops are designed to make learning art enjoyable and approachable.
+        </p>
+        <div className="flex flex-wrap gap-3 pt-4">
+          <Btn to="/contact">View Upcoming Workshops</Btn>
           <WhatsAppBtn message={WA_MESSAGES.workshops} />
         </div>
       </PageHero>
 
       <section className="section-pad">
         <div className="container-x">
-          <SectionHead eyebrow="Sessions" title="Upcoming Workshop Themes" />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <SectionHead eyebrow="Themes" title="Workshop Themes May Include" />
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {WORKSHOPS.map((w) => (
               <Card key={w}>
-                <h3 className="text-xl">{w}</h3>
-                <p className="mt-3 text-sm text-muted-foreground">
-                  A guided one-time session with materials, demonstrations, and instructor support.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <Btn to="/contact" variant="outline">
-                    Inquire About Availability
-                  </Btn>
-                </div>
+                <h3 className="text-lg font-semibold">{w}</h3>
               </Card>
             ))}
           </div>

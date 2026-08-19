@@ -3,12 +3,14 @@ import { X, Send, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { findBestIntent, fallbackResponse } from "@/lib/chatbot-knowledge";
 
 interface Message {
   id: number;
   text: string;
   sender: "user" | "bot";
   timestamp: Date;
+  quickActions?: string[] | undefined;
 }
 
 export const Chatbot = () => {
@@ -16,9 +18,10 @@ export const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Hi there! 🎨 I'm Arty, your creative guide! How can I help you today?",
+      text: "Hello and welcome to Artfully! 🎨 I am your automated assistant. How can I help you today?\n\nYou can ask me about:\n• 🎨 Art mediums & classes (Watercolor, Acrylics, Texture, Geometry, Pottery)\n• 🗓️ Weekend masterclass schedules\n• 🖌️ Walk-in painting sessions\n• 📍 Location & studio hours in Salem\n\nWe're open Wednesday–Monday, 10 AM–7 PM (Closed Tuesdays)",
       sender: "bot",
       timestamp: new Date(),
+      quickActions: ["Classes", "Workshops", "Walk-In", "Contact"],
     },
   ]);
   const [inputValue, setInputValue] = useState("");
@@ -32,80 +35,28 @@ export const Chatbot = () => {
     scrollToBottom();
   }, [messages]);
 
-  const getBotResponse = (userMessage: string): string => {
-    const message = userMessage.toLowerCase();
+  const getBotResponse = (userMessage: string): { text: string; quickActions?: string[] | undefined } => {
+    // Use the knowledge base to find the best matching intent
+    const matchedIntent = findBestIntent(userMessage);
 
-    if (
-      message.includes("hello") ||
-      message.includes("hi") ||
-      message.includes("hey")
-    ) {
-      return "Hello! 👋 Welcome to our Art Studio! I'd love to help you explore our classes, workshops, or events. What interests you?";
+    if (matchedIntent) {
+      // Use quick reply for shorter, more conversational responses
+      return {
+        text: matchedIntent.quickReply,
+        quickActions: matchedIntent.quickActions || undefined,
+      };
     }
 
-    if (message.includes("class") || message.includes("learn")) {
-      return "We offer amazing art classes! 🎨\n\n• Kids Art Classes - Creative programs for children\n• Adult Art Classes - For beginners and experienced artists\n• Online Classes - Learn from anywhere\n\nWhich one sounds interesting to you?";
-    }
-
-    if (message.includes("kid") || message.includes("child")) {
-      return "Our kids classes are fantastic! 🌟 Children explore drawing, painting, colors, craft, and mixed media. Classes are designed to be fun and educational. Would you like to inquire about availability?";
-    }
-
-    if (message.includes("adult")) {
-      return "Perfect! Our adult classes are relaxed and inspiring. 🖌️ Whether you're a beginner or have some experience, you'll enjoy learning in our supportive environment. Want to know more about schedules?";
-    }
-
-    if (message.includes("online")) {
-      return "Great choice! 💻 Our online classes let you create from anywhere. We provide clear instruction and personal guidance. Just send us an inquiry and we'll share class details and material requirements!";
-    }
-
-    if (message.includes("workshop")) {
-      return "We host exciting workshops! 🎭\n\n• Watercolour Workshop\n• Portrait Drawing\n• Acrylic Painting\n• Mixed Media\n• Clay & Texture Art\n\nThese are special one-time sessions. Want to check upcoming dates?";
-    }
-
-    if (message.includes("walk-in") || message.includes("walk in")) {
-      return "Love our walk-in studio! 🚶‍♀️ No commitment needed - just visit, pick a project (canvas painting, tote bag, pottery), choose materials, and start creating! It's super flexible. Want our studio hours?";
-    }
-
-    if (message.includes("party") || message.includes("birthday")) {
-      return "Art birthday parties are so fun! 🎉🎨 We handle everything - guided activities, materials, creative themes, and instructor support. Kids love it! Want to plan a party?";
-    }
-
-    if (message.includes("event")) {
-      return "We host creative events for all occasions! 🎊\n\n• Birthday Parties\n• Private Art Parties\n• Family Sessions\n• Corporate Events\n• School Groups\n\nShall I help you plan something special?";
-    }
-
-    if (message.includes("price") || message.includes("cost") || message.includes("fee")) {
-      return "For pricing details, I'd recommend sending us an inquiry or chatting on WhatsApp. Prices vary based on class type, duration, and group size. Our team will give you specific information! 💬";
-    }
-
-    if (message.includes("time") || message.includes("schedule") || message.includes("when")) {
-      return "Our studio hours are:\n\n📅 Monday - Friday: 10:00 AM - 7:30 PM\n📅 Saturday - Sunday: 10:00 AM - 6:00 PM\n\nClass schedules vary. Want to inquire about specific class timings?";
-    }
-
-    if (message.includes("location") || message.includes("address") || message.includes("where")) {
-      return "You can find us at our creative studio! 📍 For the exact address and directions, please check our Contact page or send us an inquiry. We're easy to find!";
-    }
-
-    if (message.includes("contact") || message.includes("inquiry")) {
-      return "Great! You can reach us:\n\n📞 Phone: +91 73589 82333\n📧 Email: hello@artfully.in\n💬 WhatsApp: Click the WhatsApp button\n\nOr fill out our inquiry form on the Contact page!";
-    }
-
-    if (message.includes("thank")) {
-      return "You're very welcome! 😊 Feel free to ask me anything else about our studio, or reach out directly if you'd like to get started!";
-    }
-
-    if (message.includes("bye") || message.includes("goodbye")) {
-      return "Goodbye! 👋 Thanks for chatting with me. Can't wait to see you create something amazing at our studio! Feel free to come back anytime!";
-    }
-
-    // Default response
-    return "That's a great question! 🎨 I can help you with:\n\n• Kids & Adult Classes\n• Online Classes\n• Workshops\n• Walk-In Studio\n• Birthday Parties & Events\n• Studio Hours & Contact\n\nWhat would you like to know more about?";
+    // Return fallback response if no match found
+    return {
+      text: fallbackResponse.quickReply,
+      quickActions: fallbackResponse.quickActions || undefined,
+    };
   };
 
   const handleQuickReply = (reply: string) => {
     // Remove emojis from the reply text
-    const cleanReply = reply.replace(/[🎨🚶🎉📞]/g, '').trim();
+    const cleanReply = reply.replace(/[🎨🚶🎉📞🖌️📍💼🎁👶]/g, '').trim();
     
     const userMessage: Message = {
       id: messages.length + 1,
@@ -118,11 +69,13 @@ export const Chatbot = () => {
 
     // Simulate bot thinking
     setTimeout(() => {
+      const response = getBotResponse(cleanReply);
       const botMessage: Message = {
         id: messages.length + 2,
-        text: getBotResponse(cleanReply),
+        text: response.text,
         sender: "bot",
         timestamp: new Date(),
+        quickActions: response.quickActions,
       };
       setMessages((prev) => [...prev, botMessage]);
     }, 800);
@@ -138,16 +91,19 @@ export const Chatbot = () => {
       timestamp: new Date(),
     };
 
+    const messageToProcess = inputValue;
     setMessages((prev) => [...prev, userMessage]);
     setInputValue("");
 
     // Simulate bot thinking
     setTimeout(() => {
+      const response = getBotResponse(messageToProcess);
       const botMessage: Message = {
         id: messages.length + 2,
-        text: getBotResponse(inputValue),
+        text: response.text,
         sender: "bot",
         timestamp: new Date(),
+        quickActions: response.quickActions,
       };
       setMessages((prev) => [...prev, botMessage]);
     }, 800);
@@ -240,55 +196,54 @@ export const Chatbot = () => {
           <ScrollArea className="flex-1 p-4 bg-[#FFF2DB]">
             <div className="space-y-4">
               {messages.map((message) => (
-                <div
-                  key={message.id}
-                  className={`flex ${
-                    message.sender === "user" ? "justify-end" : "justify-start"
-                  }`}
-                >
+                <div key={message.id}>
                   <div
-                    className={`max-w-[80%] rounded-2xl px-4 py-2 ${
-                      message.sender === "user"
-                        ? "bg-[#607456] text-[#FFF2DB] rounded-br-sm"
-                        : "bg-white border-2 border-[#607456]/20 text-[#493628] rounded-bl-sm shadow-sm"
+                    className={`flex ${
+                      message.sender === "user" ? "justify-end" : "justify-start"
                     }`}
                   >
-                    <p className="text-sm whitespace-pre-line">{message.text}</p>
-                    <p
-                      className={`text-xs mt-1 ${
+                    <div
+                      className={`max-w-[80%] rounded-2xl px-4 py-2 ${
                         message.sender === "user"
-                          ? "text-[#FFF2DB]/70"
-                          : "text-[#493628]/50"
+                          ? "bg-[#607456] text-[#FFF2DB] rounded-br-sm"
+                          : "bg-white border-2 border-[#607456]/20 text-[#493628] rounded-bl-sm shadow-sm"
                       }`}
                     >
-                      {message.timestamp.toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                    </p>
+                      <p className="text-sm whitespace-pre-line">{message.text}</p>
+                      <p
+                        className={`text-xs mt-1 ${
+                          message.sender === "user"
+                            ? "text-[#FFF2DB]/70"
+                            : "text-[#493628]/50"
+                        }`}
+                      >
+                        {message.timestamp.toLocaleTimeString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </p>
+                    </div>
                   </div>
+                  
+                  {/* Quick Actions for bot messages */}
+                  {message.sender === "bot" && message.quickActions && (
+                    <div className="flex gap-2 mt-2 ml-2">
+                      {message.quickActions.map((action) => (
+                        <button
+                          key={action}
+                          onClick={() => handleQuickReply(action)}
+                          className="px-3 py-1 bg-white border border-[#607456] text-[#607456] rounded-full text-xs font-medium hover:bg-[#607456] hover:text-[#FFF2DB] transition-colors"
+                        >
+                          {action}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
               <div ref={messagesEndRef} />
             </div>
           </ScrollArea>
-
-          {/* Quick Replies */}
-          <div className="px-4 py-2 bg-[#FFF2DB] border-t border-[#607456]/20">
-            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-              {["Classes 🎨", "Walk-In 🚶", "Events 🎉", "Contact 📞"].map(
-                (reply) => (
-                  <button
-                    key={reply}
-                    onClick={() => handleQuickReply(reply)}
-                    className="px-3 py-1 bg-white border border-[#607456] text-[#607456] rounded-full text-xs font-medium hover:bg-[#607456] hover:text-[#FFF2DB] transition-colors whitespace-nowrap"
-                  >
-                    {reply}
-                  </button>
-                )
-              )}
-            </div>
-          </div>
 
           {/* Input Area */}
           <div className="p-4 bg-white border-t border-[#607456]/20">

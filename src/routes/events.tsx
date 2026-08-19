@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import partyImg from "@/assets/art-party.jpg";
 import {
   Btn,
   Card,
@@ -15,16 +14,16 @@ export const Route = createFileRoute("/events")({
   component: Events,
   head: () => ({
     meta: [
-      { title: "Kids Birthday Art Parties & Events | Artfully" },
+      { title: "Art Birthday Parties & Creative Events in Salem | Artfully" },
       {
         name: "description",
         content:
-          "Host kids birthday art parties, private art parties, family sessions, corporate and group creative events at our studio.",
+          "Art birthday parties in Salem, private creative sessions and group art activities. Celebrate with painting and creativity.",
       },
-      { property: "og:title", content: "Kids Birthday Art Parties & Events | Artfully" },
+      { property: "og:title", content: "Art Birthday Parties & Creative Events in Salem | Artfully" },
       {
         property: "og:description",
-        content: "Turn your special occasion into a memorable creative experience.",
+        content: "Turn your next celebration into a creative experience at Artfully Salem.",
       },
       { property: "og:url", content: "/events" },
     ],
@@ -32,94 +31,80 @@ export const Route = createFileRoute("/events")({
   }),
 });
 
-const EVENTS = [
-  "Kids Birthday Parties",
-  "Private Art Parties",
-  "Family Creative Sessions",
-  "Corporate Creative Events",
-  "School & Group Events",
-];
-
-const INCLUDES = [
-  "Guided Art Activity",
-  "Art Materials",
-  "Creative Theme",
-  "Instructor Support",
-  "Group Setup",
-  "Take-Home Artwork",
-];
-
 function Events() {
   return (
     <SiteLayout>
-      <PageHero eyebrow="Events & Parties" title="Celebrate Creatively">
-        <p>Turn your special occasion into a memorable creative experience.</p>
-        <div className="flex flex-wrap gap-3 pt-2">
-          <Btn to="/contact">Plan Your Event</Btn>
+      <PageHero eyebrow="Events & Parties" title="Art Birthday Parties & Creative Events in Salem">
+        <p>Turn your next celebration into a creative experience at Artfully.</p>
+        <p className="mt-3">
+          We organise art birthday parties in Salem, private creative sessions and group art activities where guests can paint, create and take home something they've made themselves.
+        </p>
+        <div className="flex flex-wrap gap-3 pt-4">
+          <Btn to="/contact">Plan Your Art Event</Btn>
           <WhatsAppBtn message={WA_MESSAGES.events} />
         </div>
       </PageHero>
 
       <section className="section-pad">
         <div className="container-x">
-          <SectionHead eyebrow="We Host" title="Occasions We Create For" />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {EVENTS.map((e) => (
-              <Card key={e}>
-                <h3 className="text-xl">{e}</h3>
-                <p className="mt-3 text-sm text-muted-foreground">
-                  A guided art experience set up for your group, with materials and instructor
-                  support included.
-                </p>
-                <div className="mt-6">
-                  <Btn to="/contact" variant="outline">
-                    Plan Your Event
-                  </Btn>
-                </div>
-              </Card>
-            ))}
+          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+            <Card>
+              <h3 className="text-2xl">Kids' Art Birthday Parties</h3>
+              <p className="mt-4 text-muted-foreground">
+                Give children a birthday experience filled with colours, creativity and hands-on activities.
+              </p>
+              <div className="mt-6">
+                <Btn to="/contact" variant="outline">
+                  Plan Birthday Party
+                </Btn>
+              </div>
+            </Card>
+
+            <Card>
+              <h3 className="text-2xl">Private Art Parties</h3>
+              <p className="mt-4 text-muted-foreground">
+                Get your friends together for a relaxed painting or creative session.
+              </p>
+              <div className="mt-6">
+                <Btn to="/contact" variant="outline">
+                  Plan Private Party
+                </Btn>
+              </div>
+            </Card>
+
+            <Card>
+              <h3 className="text-2xl">Corporate Art Events</h3>
+              <p className="mt-4 text-muted-foreground">
+                Bring teams together through collaborative and engaging creative activities.
+              </p>
+              <div className="mt-6">
+                <Btn to="/contact" variant="outline">
+                  Plan Corporate Event
+                </Btn>
+              </div>
+            </Card>
+
+            <Card>
+              <h3 className="text-2xl">Family & Group Art Sessions</h3>
+              <p className="mt-4 text-muted-foreground">
+                Spend quality time together while creating something memorable.
+              </p>
+              <div className="mt-6">
+                <Btn to="/contact" variant="outline">
+                  Plan Group Session
+                </Btn>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
 
-      <section className="section-pad bg-accent/40">
-        <div className="container-x grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="eyebrow mb-3">Birthdays</p>
-            <h2 className="text-3xl sm:text-4xl">Art Birthday Parties for Kids</h2>
-            <p className="mt-4 text-muted-foreground">
-              Celebrate your child's special day with painting, colours, creativity, and fun.
-            </p>
-            <p className="mt-6 text-sm font-semibold">Our art parties can include:</p>
-            <ul className="mt-3 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
-              {INCLUDES.map((i) => (
-                <li key={i}>• {i}</li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Btn to="/contact">Inquire About Birthday Parties</Btn>
-              <WhatsAppBtn message={WA_MESSAGES.events} />
-            </div>
-          </div>
-          <div className="overflow-hidden rounded-md border border-border">
-            <img
-              src={partyImg}
-              alt="Kids showing their paintings at an art birthday party"
-              loading="lazy"
-              width={1400}
-              height={900}
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section className="section-pad">
+      <section className="section-pad bg-secondary/50">
         <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-start">
           <SectionHead center={false} eyebrow="Inquiry" title="Tell Us About Your Occasion">
             <p>Share your date, group size, and age group and we'll plan the creative session.</p>
           </SectionHead>
-          <InquiryForm defaultSubject="Birthday Parties" />
+          <InquiryForm defaultSubject="Art Events & Parties" />
         </div>
       </section>
     </SiteLayout>
