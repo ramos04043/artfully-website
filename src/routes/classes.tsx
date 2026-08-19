@@ -8,7 +8,6 @@ import {
   WA_MESSAGES,
   WhatsAppBtn,
 } from "@/components/site/site";
-import { InquiryForm } from "@/components/site/InquiryForm";
 
 export const Route = createFileRoute("/classes")({
   component: Classes,
@@ -86,18 +85,6 @@ function Classes() {
         <div className="container-x text-center mt-12">
           <p className="text-lg font-semibold">Learn. Practise. Create.</p>
           <p className="mt-2 text-muted-foreground">Explore art at your own pace with guidance from our instructors.</p>
-        </div>
-      </section>
-
-      <section className="section-pad bg-secondary/50">
-        <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-start">
-          <SectionHead center={false} eyebrow="Inquiry" title="Ask About Class Schedules">
-            <p>
-              Tell us who the class is for and what you'd like to learn. Our team will share
-              schedules, batch timings, and material details.
-            </p>
-          </SectionHead>
-          <InquiryForm defaultSubject="Art Classes" />
         </div>
       </section>
     </SiteLayout>

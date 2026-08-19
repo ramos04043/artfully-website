@@ -8,7 +8,6 @@ import {
   WA_MESSAGES,
   WhatsAppBtn,
 } from "@/components/site/site";
-import { InquiryForm } from "@/components/site/InquiryForm";
 
 export const Route = createFileRoute("/workshops")({
   component: Workshops,
@@ -71,15 +70,6 @@ function Workshops() {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="section-pad bg-secondary/50">
-        <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-start">
-          <SectionHead center={false} eyebrow="Inquiry" title="Reserve Your Spot">
-            <p>Send an inquiry and we'll share upcoming dates, timings, and what to bring.</p>
-          </SectionHead>
-          <InquiryForm defaultSubject="Workshops" />
         </div>
       </section>
     </SiteLayout>

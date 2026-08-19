@@ -8,7 +8,6 @@ import {
   WA_MESSAGES,
   WhatsAppBtn,
 } from "@/components/site/site";
-import { InquiryForm } from "@/components/site/InquiryForm";
 
 export const Route = createFileRoute("/walk-in-studio")({
   component: WalkIn,
@@ -87,15 +86,6 @@ function WalkIn() {
             <Btn to="/contact">Ask About Walk-In Availability</Btn>
             <WhatsAppBtn message={WA_MESSAGES.walkin} label="Chat on WhatsApp" />
           </div>
-        </div>
-      </section>
-
-      <section className="section-pad">
-        <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-start">
-          <SectionHead center={false} eyebrow="Inquiry" title="Planning a Visit?">
-            <p>Send us a quick inquiry and we'll confirm availability and project options.</p>
-          </SectionHead>
-          <InquiryForm defaultSubject="Walk-In Studio" />
         </div>
       </section>
     </SiteLayout>

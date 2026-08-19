@@ -8,7 +8,6 @@ import {
   WA_MESSAGES,
   WhatsAppBtn,
 } from "@/components/site/site";
-import { InquiryForm } from "@/components/site/InquiryForm";
 
 export const Route = createFileRoute("/events")({
   component: Events,
@@ -96,15 +95,6 @@ function Events() {
               </div>
             </Card>
           </div>
-        </div>
-      </section>
-
-      <section className="section-pad bg-secondary/50">
-        <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-start">
-          <SectionHead center={false} eyebrow="Inquiry" title="Tell Us About Your Occasion">
-            <p>Share your date, group size, and age group and we'll plan the creative session.</p>
-          </SectionHead>
-          <InquiryForm defaultSubject="Art Events & Parties" />
         </div>
       </section>
     </SiteLayout>
