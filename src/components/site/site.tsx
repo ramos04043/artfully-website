@@ -240,8 +240,9 @@ function Footer() {
         <div>
           <h3 className="text-sm tracking-widest uppercase">Studio Hours</h3>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-            <li>Wednesday – Monday: 11:00 AM – 9:00 PM</li>
-            <li>Closed on Tuesdays</li>
+            <li>Open 6 Days a Week</li>
+            <li>11:00 AM – 9:00 PM</li>
+            <li>Closed only on Tuesdays</li>
           </ul>
           <div className="mt-4 flex gap-4 text-sm text-muted-foreground">
             <a href={waLink(WA_MESSAGES.general)} target="_blank" rel="noreferrer">

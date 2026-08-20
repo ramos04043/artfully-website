@@ -18,7 +18,7 @@ export const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Hello and welcome to Artfully! 🎨 I am your automated assistant. How can I help you today?\n\nYou can ask me about:\n• 🎨 Art mediums & classes (Watercolor, Acrylics, Texture, Geometry, Pottery)\n• 🗓️ Weekend masterclass schedules\n• 🖌️ Walk-in painting sessions\n• 📍 Location & studio hours in Salem\n\nWe're open Wednesday–Monday, 11 AM–9 PM (Closed Tuesdays)",
+      text: "Hello and welcome to Artfully! 🎨 I am your automated assistant. How can I help you today?\n\nYou can ask me about:\n• 🎨 Art mediums & classes (Watercolor, Acrylics, Texture, Geometry, Pottery)\n• 🗓️ Weekend masterclass schedules\n• 🖌️ Walk-in painting sessions\n• 📍 Location & studio hours in Salem\n\nWe're open 6 days a week, 11 AM–9 PM (Closed only on Tuesdays)",
       sender: "bot",
       timestamp: new Date(),
       quickActions: ["Classes", "Workshops", "Walk-In", "Contact"],

@@ -549,11 +549,11 @@ Art Studio Address Placeholder
 
 Studio Hours:
 
-Wednesday – Monday
+Open 6 Days a Week
 
 11:00 AM – 9:00 PM
 
-Closed on Tuesdays
+Closed only on Tuesdays
 
 ---
 

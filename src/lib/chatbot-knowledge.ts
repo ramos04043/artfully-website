@@ -66,8 +66,8 @@ export const knowledgeBase: Intent[] = [
       "timings",
       "schedule"
     ],
-    answer: "Artfully is open Wednesday through Monday. Our standard operating hours are 11:00 AM to 9:00 PM. We are closed on Tuesdays for regular studio maintenance and deep art material inventory setup. Special weekend workshops may run past standard hours with pre-registration.",
-    quickReply: "Open Wednesday–Monday: 11:00 AM to 9:00 PM. Closed on Tuesdays. ⏰"
+    answer: "Artfully is open 6 days a week (Sunday, Monday, Wednesday, Thursday, Friday, Saturday). Our standard operating hours are 11:00 AM to 9:00 PM. We are closed only on Tuesdays for regular studio maintenance and deep art material inventory setup. Special weekend workshops may run past standard hours with pre-registration.",
+    quickReply: "Open 6 days a week (11:00 AM to 9:00 PM). Closed only on Tuesdays. ⏰"
   },
   {
     id: "intent.studio.contact",
@@ -84,8 +84,8 @@ export const knowledgeBase: Intent[] = [
       "call you",
       "message"
     ],
-    answer: "You can reach our studio front team directly via phone or WhatsApp at +91 73589 82333 during studio working hours (11:00 AM – 9:00 PM, Wed–Mon). You can also email us at hello@artfully.in or message us on Instagram @Artfully.",
-    quickReply: "Call/WhatsApp us at +91 73589 82333 (Wed–Mon, 11am–9pm) or email hello@artfully.in! 📞"
+    answer: "You can reach our studio front team directly via phone or WhatsApp at +91 73589 82333 during studio working hours (11:00 AM – 9:00 PM, open 6 days - closed only Tuesdays). You can also email us at hello@artfully.in or message us on Instagram @Artfully.",
+    quickReply: "Call/WhatsApp us at +91 73589 82333 (11am–9pm, closed only Tuesdays) or email hello@artfully.in! 📞"
   },
   {
     id: "intent.studio.parking",
@@ -383,7 +383,7 @@ export const knowledgeBase: Intent[] = [
       "vanakkam",
       "namaste"
     ],
-    answer: "Hello and welcome to Artfully! 🎨 I am your automated assistant. How can I help you today?\n\nYou can ask me about:\n• 🎨 Art mediums & classes (Watercolor, Acrylics, Texture, Geometry, Pottery)\n• 🗓️ Weekend masterclass schedules\n• 🖌️ Walk-in painting sessions\n• 📍 Location & studio hours in Salem\n\nWe're open Wednesday–Monday, 11 AM–9 PM (Closed Tuesdays)",
+    answer: "Hello and welcome to Artfully! 🎨 I am your automated assistant. How can I help you today?\n\nYou can ask me about:\n• 🎨 Art mediums & classes (Watercolor, Acrylics, Texture, Geometry, Pottery)\n• 🗓️ Weekend masterclass schedules\n• 🖌️ Walk-in painting sessions\n• 📍 Location & studio hours in Salem\n\nWe're open 6 days a week, 11 AM–9 PM (Closed only on Tuesdays)",
     quickReply: "Welcome to Artfully! 🎨 How can I help you today? Ask about classes, workshops, walk-ins, or studio location!",
     quickActions: ["Classes", "Workshops", "Walk-In", "Contact"]
   },
@@ -400,7 +400,7 @@ export const knowledgeBase: Intent[] = [
       "agent",
       "real person"
     ],
-    answer: "I am transferring your conversation to our studio coordination team. Please leave your name, phone number, and a short message regarding your inquiry, and a team member will reply shortly!\n\n📞 Call/WhatsApp: +91 73589 82333 (Wed–Mon, 11 AM – 9 PM)\n📧 Email: hello@artfully.in",
+    answer: "I am transferring your conversation to our studio coordination team. Please leave your name, phone number, and a short message regarding your inquiry, and a team member will reply shortly!\n\n📞 Call/WhatsApp: +91 73589 82333 (11 AM – 9 PM, open 6 days - closed only Tuesdays)\n📧 Email: hello@artfully.in",
     quickReply: "Transferring you to our studio coordinator! Please drop your name and question, and we will get back to you shortly. 👋"
   },
   {
