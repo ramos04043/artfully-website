@@ -76,7 +76,7 @@ function Contact() {
                 <p className="text-xs tracking-widest text-muted-foreground uppercase">
                   Studio Hours
                 </p>
-                <p className="mt-1 text-base">Wednesday – Monday: 10:00 AM – 7:00 PM</p>
+                <p className="mt-1 text-base">Wednesday – Monday: 11:00 AM – 9:00 PM</p>
                 <p className="text-base">Closed on Tuesdays</p>
               </div>
             </div>

@@ -240,8 +240,8 @@ function Footer() {
         <div>
           <h3 className="text-sm tracking-widest uppercase">Studio Hours</h3>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-            <li>Monday – Friday: 10:00 AM – 7:30 PM</li>
-            <li>Saturday – Sunday: 10:00 AM – 6:00 PM</li>
+            <li>Wednesday – Monday: 11:00 AM – 9:00 PM</li>
+            <li>Closed on Tuesdays</li>
           </ul>
           <div className="mt-4 flex gap-4 text-sm text-muted-foreground">
             <a href={waLink(WA_MESSAGES.general)} target="_blank" rel="noreferrer">
@@ -249,9 +249,6 @@ function Footer() {
             </a>
             <a href="https://www.instagram.com/artfully.in" target="_blank" rel="noreferrer" aria-label="Instagram">
               Instagram
-            </a>
-            <a href="#" aria-label="Facebook">
-              Facebook
             </a>
           </div>
         </div>
